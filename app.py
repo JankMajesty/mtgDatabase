@@ -302,10 +302,21 @@ def index():
     """Serve the main page"""
     return render_template('index.html')
 
-@app.route('/<path:path>')
-def serve_react(path):
-    """Serve React app routes"""
-    return render_template('index.html')
+@app.route('/css/<path:filename>')
+def serve_css(filename):
+    css_path = os.path.join(app.root_path, 'templates', 'css')
+    print(f"CSS request for {filename}, looking in: {css_path}")
+    print(f"Directory exists: {os.path.exists(css_path)}")
+    print(f"Files in directory: {os.listdir(css_path) if os.path.exists(css_path) else 'N/A'}")
+    return send_from_directory(css_path, filename)
+
+@app.route('/js/<path:filename>')
+def serve_js(filename):
+    js_path = os.path.join(app.root_path, 'templates', 'js')
+    print(f"JS request for {filename}, looking in: {js_path}")
+    print(f"Directory exists: {os.path.exists(js_path)}")
+    print(f"Files in directory: {os.listdir(js_path) if os.path.exists(js_path) else 'N/A'}")
+    return send_from_directory(js_path, filename)
 
 @app.route('/api/filters', methods=['GET'])
 def get_filters():
