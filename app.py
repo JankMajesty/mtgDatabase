@@ -300,7 +300,7 @@ query_engine = MTGQueryEngine()
 @app.route('/')
 def index():
     """Serve the main page"""
-    return render_template('simple.html')
+    return render_template('index.html')
 
 @app.route('/<path:path>')
 def serve_react(path):
