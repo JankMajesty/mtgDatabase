@@ -1,6 +1,6 @@
-# MTG Card Database - Advanced Search Frontend
+# MTG Card Database - Advanced Search
 
-A modern web application for searching Magic: The Gathering cards from Urza's Block through Invasion Block, featuring a React frontend with Flask backend API.
+A modern web application for searching Magic: The Gathering cards from Urza's Block through Invasion Block, featuring a vanilla JavaScript frontend with Flask backend API.
 
 ## 🃏 Features
 
@@ -16,14 +16,13 @@ A modern web application for searching Magic: The Gathering cards from Urza's Bl
 
 ### Prerequisites
 - Python 3.11+
-- Node.js 18+ (for frontend development)
 
 ### Installation
 
 1. **Clone the repository:**
 ```bash
 git clone <your-repo-url>
-cd frontendmtgdb
+cd mtgDatabase
 ```
 
 2. **Install Python dependencies:**
@@ -33,28 +32,17 @@ pip install -r requirements.txt
 uv sync
 ```
 
-3. **Install frontend dependencies:**
-```bash
-cd frontend
-npm install
-```
-
 ### Running the Application
 
-1. **Start the Flask backend:**
+1. **Start the Flask application:**
 ```bash
-python app.py
+python3 app.py
+# OR using uv:
+uv run python app.py
 ```
-The backend will be available at `http://localhost:8001`
+The application will be available at `http://localhost:8001`
 
-2. **Start the React frontend (in a new terminal):**
-```bash
-cd frontend
-npm run dev
-```
-The frontend will be available at `http://localhost:3000`
-
-3. **Open your browser and navigate to `http://localhost:3000`**
+2. **Open your browser and navigate to `http://localhost:8001`**
 
 ## 🗄️ Database Coverage
 
@@ -95,11 +83,11 @@ The database includes cards from these MTG sets:
 - **Database Layer**: SQLite with optimized queries
 - **CORS Support**: Enables frontend-backend communication
 
-### Frontend (React + Vite)
-- **Modern React**: Hooks-based components with TypeScript support
+### Frontend (Vanilla JavaScript)
+- **Modern JavaScript**: ES6+ features with async/await
 - **Responsive UI**: CSS Grid and Flexbox layouts
-- **Component Structure**: Modular, reusable components
-- **State Management**: Custom hooks for search functionality
+- **Modular Structure**: Organized functions for search and display
+- **Dynamic DOM**: Real-time filter population and results rendering
 
 ### Database Schema
 ```sql
@@ -132,25 +120,27 @@ curl -X POST http://localhost:8001/api/search \
 ## 🛠️ Technology Stack
 
 - **Backend**: Flask, SQLite, Python 3.11+
-- **Frontend**: React 18, Vite, JavaScript ES6+
+- **Frontend**: Vanilla JavaScript ES6+, HTML5, CSS3
 - **Styling**: Modern CSS3 with gradients and animations
-- **Icons**: Lucide React icon library
-- **HTTP Client**: Axios for API communication
+- **Icons**: Font Awesome icon library
+- **HTTP Client**: Native Fetch API
 
 ## 📁 Project Structure
 
 ```
-frontendmtgdb/
+mtgDatabase/
 ├── app.py                 # Flask backend server
+├── main.py               # Database population script
 ├── mtg_database.db        # SQLite database
+├── mtgSchema.sql         # Database schema
 ├── requirements.txt       # Python dependencies
-├── frontend/              # React frontend
-│   ├── src/
-│   │   ├── components/    # React components
-│   │   ├── hooks/         # Custom React hooks
-│   │   ├── services/      # API service layer
-│   │   └── App.jsx        # Main application
-│   └── package.json       # Node.js dependencies
+├── templates/            # Frontend templates
+│   ├── index.html        # Main HTML page
+│   ├── css/
+│   │   └── styles.css    # Application styles
+│   └── js/
+│       └── main.js       # Frontend JavaScript
+├── Procfile              # Deployment configuration
 └── README.md             # This file
 ```
 
@@ -158,13 +148,13 @@ frontendmtgdb/
 
 ### Adding New Features
 1. **Backend**: Add new API endpoints in `app.py`
-2. **Frontend**: Create new components in `frontend/src/components/`
+2. **Frontend**: Modify `templates/js/main.js` for new functionality
 3. **Database**: Use `update_schema.py` for schema changes
 
 ### Code Style
 - **Python**: Follow PEP 8 guidelines
-- **JavaScript**: Use modern ES6+ syntax
-- **Components**: Functional components with hooks
+- **JavaScript**: Use modern ES6+ syntax with async/await
+- **HTML/CSS**: Semantic markup with responsive design
 
 ## 🤝 Contributing
 
